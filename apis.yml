@@ -1,0 +1,53 @@
+name: Serbia Company Data
+description: >-
+  A single-purpose, pay-per-call REST API serving normalized Serbian company registry data and latest
+  financial-statement summaries from official APR high-value open data. Access is gated by HTTP 402 micropayments via
+  the x402 protocol settled in Base USDC, requiring no account or API key.
+url: https://serbia-company-data.apievangelist.com/apis.yml
+created: '2026-07-28'
+modified: '2026-07-28'
+specificationVersion: '0.21'
+tags:
+  - serbia
+  - company-data
+  - business-registry
+  - open-data
+  - x402
+  - base-usdc
+  - openapi
+  - financial-statements
+  - pay-per-call
+  - agent-native
+apis:
+  - name: Serbia Company Data API
+    description: >-
+      REST API for Serbian company profiles, name search, and batch lookups, with the latest public financial summaries.
+      Endpoints are gated by x402/Base-USDC micropayments except a free sample endpoint.
+    humanURL: https://serbia-company-x402.vercel.app
+    baseURL: https://serbia-company-x402.vercel.app
+    tags:
+      - serbia
+      - company-data
+      - business-registry
+      - open-data
+      - x402
+      - base-usdc
+      - openapi
+      - financial-statements
+      - pay-per-call
+      - agent-native
+    properties:
+      - type: OpenAPI
+        url: https://serbia-company-x402.vercel.app/openapi.json
+      - type: Documentation
+        url: https://serbia-company-x402.vercel.app
+      - type: APIsJSON
+        url: https://serbia-company-x402.vercel.app/.well-known/apis.json
+maintainers:
+  - FN: Serbia Company Data
+    url: https://serbia-company-x402.vercel.app
+generated:
+  by: apis.io/add
+  model: claude-opus-4-8
+  confidence: 95
+  at: '2026-07-28T14:24:59.856Z'
