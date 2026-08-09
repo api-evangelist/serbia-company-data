@@ -1,0 +1,98 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "input": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "const": "http"
+        },
+        "method": {
+          "type": "string",
+          "enum": [
+            "GET"
+          ]
+        },
+        "queryParams": {
+          "type": "object",
+          "properties": {
+            "mb": {
+              "type": "string",
+              "pattern": "^\\d{8}$"
+            }
+          },
+          "required": [
+            "mb"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "type",
+        "method"
+      ],
+      "additionalProperties": false
+    },
+    "output": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "example": {
+          "type": "object",
+          "properties": {
+            "company": {
+              "type": "object",
+              "properties": {
+                "registrationNumber": {
+                  "type": "string",
+                  "pattern": "^\\d{8}$"
+                },
+                "businessName": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "status": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "incorporationDate": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "legalForm": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "activityCode": {
+                  "type": [
+                    "string",
+                    "number",
+                    "null"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      },
+      "required": [
+        "type"
+      ]
+    }
+  },
+  "required": [
+    "input"
+  ]
+}

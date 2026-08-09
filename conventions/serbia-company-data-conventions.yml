@@ -1,0 +1,104 @@
+generated: '2026-08-09'
+method: searched
+source: https://serbia-company-x402.vercel.app/ + openapi/serbia-company-data-openapi.json + live probes
+summary: >-
+  Cross-cutting request/response semantics for the Serbia Company Data API, captured from the published
+  landing page, the served OpenAPI 3.1 document, and live probes of every route. This is a small,
+  single-purpose, read-only dataset API with no accounts and no write surface; the interesting
+  conventions are the x402 payment gate, the fixed monetary unit, and the snapshot metadata envelope.
+authentication:
+  style: x402-payment-challenge
+  accounts: false
+  api_keys: false
+  see: authentication/serbia-company-data-authentication.yml
+idempotency:
+  documented: false
+  supported: false
+  notes: >-
+    No idempotency-key header or parameter is documented or present in the OpenAPI. All three priced
+    operations are read-only lookups, so repeat calls are naturally safe on the data side — but each
+    repeat is a new billable x402 payment, so retries are NOT free. There is no published mechanism to
+    replay a paid request without paying again.
+pagination:
+  style: none
+  notes: >-
+    There is no cursor or offset. searchSerbianCompanies takes a limit (1-10, default 5) that caps the
+    ranked result set; there is no way to page past it. batchGetSerbianCompanies caps at 10
+    registration numbers per request.
+  params:
+    - name: limit
+      operation: searchSerbianCompanies
+      min: 1
+      max: 10
+      default: 5
+    - name: registrationNumbers
+      operation: batchGetSerbianCompanies
+      min_items: 1
+      max_items: 10
+field_selection:
+  supported: false
+  notes: Responses are a fixed normalized shape; there is no sparse-fieldset or expansion mechanism.
+identifiers:
+  primary_key: registrationNumber
+  format: 8-digit Serbian maticni broj (MB)
+  pattern: '^\d{8}$'
+  notes: >-
+    The registration number is the join key across every route and is the same identifier APR
+    publishes. Name search is the discovery path when the MB is unknown; it accepts Serbian Latin and
+    Cyrillic input.
+units_and_locale:
+  monetary_unit: thousand_RSD
+  notes: >-
+    Every monetary value in latestFinancialStatement is in thousands of Serbian dinars, declared
+    per-field with a unit key and the APR AOP line code (e.g. totalAssets aop 0059, totalRevenue aop
+    1043). Registry status, legal form and municipality names are returned in Serbian Cyrillic as APR
+    publishes them.
+response_envelope:
+  company_lookup: '{ "company": { ... } }'
+  search: '{ "query": ..., "count": ..., "results": [ ... ] }'
+  batch: '{ "results": [ { "registrationNumber": ..., "company": { ... } } ] }'
+  sample: '{ "sample": { ... }, "metadata": { ... }, "notice": ... }'
+  notes: >-
+    The free /api/sample and /health routes attach a metadata block carrying schemaVersion,
+    generatedAt, downloadedAt, registrationAsOf, financialAsOf, companyCount, the APR source dataset
+    URLs, the license URL and the monetary unit. That block is the provenance contract for the whole
+    dataset.
+error_envelope:
+  shape: '{ "error": "<snake_case_code>" }'
+  problem_json: false
+  notes: >-
+    Errors are a bare JSON object with a single snake_case error string (observed: not_found). RFC 9457
+    application/problem+json is not used, and no error responses other than 402 are declared in the
+    OpenAPI.
+  see: errors/serbia-company-data-problem-types.yml
+rate_limiting:
+  documented: false
+  headers: none observed
+  notes: >-
+    No rate-limit policy or RateLimit headers are published. Per-request pricing is the de facto
+    throttle.
+request_tracing:
+  request_id_header: none first-party
+  notes: Vercel returns an x-vercel-id header, which is edge infrastructure, not a documented API contract.
+caching:
+  cache_control: 'public, max-age=0, must-revalidate'
+  notes: Observed on every route. The underlying dataset is a monthly snapshot, not live registry data.
+versioning:
+  api_version: '0.1.0'
+  scheme: none-in-path
+  data_schema_version: 1
+  notes: >-
+    There is no version segment in the URL and no version header. info.version in the OpenAPI is 0.1.0
+    and the payload metadata carries schemaVersion 1 — those are the only two version signals.
+  see: lifecycle/serbia-company-data-lifecycle.yml
+undocumented_routes:
+  - path: /api/sample
+    note: Free sample, linked from the landing page but absent from the OpenAPI paths.
+  - path: /health
+    note: Health plus dataset metadata, linked from the landing page but absent from the OpenAPI paths.
+cross_links:
+  authentication: authentication/serbia-company-data-authentication.yml
+  errors: errors/serbia-company-data-problem-types.yml
+  lifecycle: lifecycle/serbia-company-data-lifecycle.yml
+  data_model: data-model/serbia-company-data-data-model.yml
+  sandbox: sandbox/serbia-company-data-sandbox.yml

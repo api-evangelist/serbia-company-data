@@ -1,0 +1,548 @@
+{
+  "_note": "Verbatim base64-decoded PAYMENT-REQUIRED header documents returned by the live API on an unpaid request. Captured 2026-08-09.",
+  "challenges": {
+    "getSerbianCompany": {
+      "operationId": "getSerbianCompany",
+      "method": "GET",
+      "path": "/api/company",
+      "http_status": 402,
+      "payment_required": {
+        "x402Version": 2,
+        "error": "Payment required",
+        "resource": {
+          "url": "https://serbia-company-x402.vercel.app/api/company?mb=07044275",
+          "description": "Official Serbian APR company profile by 8-digit registration number, including status and latest public financial summary.",
+          "mimeType": "application/json",
+          "serviceName": "Serbia Company Data",
+          "tags": [
+            "serbia",
+            "company",
+            "registry",
+            "financial-data"
+          ],
+          "iconUrl": "https://serbia-company-x402.vercel.app/favicon.svg"
+        },
+        "accepts": [
+          {
+            "scheme": "exact",
+            "network": "eip155:8453",
+            "amount": "10000",
+            "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+            "payTo": "0xcEE09f451355261E5f6a0271757638A55AF8Ae7b",
+            "maxTimeoutSeconds": 300,
+            "extra": {
+              "name": "USD Coin",
+              "version": "2"
+            }
+          }
+        ],
+        "extensions": {
+          "bazaar": {
+            "info": {
+              "input": {
+                "type": "http",
+                "queryParams": {
+                  "mb": "07044275"
+                },
+                "method": "GET"
+              },
+              "output": {
+                "type": "json",
+                "example": {
+                  "company": {
+                    "registrationNumber": "07044275",
+                    "businessName": "AIR SERBIA A.D. BEOGRAD",
+                    "status": "Aktivan",
+                    "incorporationDate": "1992-06-16",
+                    "legalForm": "Akcionarsko društvo",
+                    "activityCode": "5110"
+                  }
+                }
+              }
+            },
+            "schema": {
+              "$schema": "https://json-schema.org/draft/2020-12/schema",
+              "type": "object",
+              "properties": {
+                "input": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "const": "http"
+                    },
+                    "method": {
+                      "type": "string",
+                      "enum": [
+                        "GET"
+                      ]
+                    },
+                    "queryParams": {
+                      "type": "object",
+                      "properties": {
+                        "mb": {
+                          "type": "string",
+                          "pattern": "^\\d{8}$"
+                        }
+                      },
+                      "required": [
+                        "mb"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "type",
+                    "method"
+                  ],
+                  "additionalProperties": false
+                },
+                "output": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string"
+                    },
+                    "example": {
+                      "type": "object",
+                      "properties": {
+                        "company": {
+                          "type": "object",
+                          "properties": {
+                            "registrationNumber": {
+                              "type": "string",
+                              "pattern": "^\\d{8}$"
+                            },
+                            "businessName": {
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            },
+                            "status": {
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            },
+                            "incorporationDate": {
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            },
+                            "legalForm": {
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            },
+                            "activityCode": {
+                              "type": [
+                                "string",
+                                "number",
+                                "null"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "required": [
+                    "type"
+                  ]
+                }
+              },
+              "required": [
+                "input"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "searchSerbianCompanies": {
+      "operationId": "searchSerbianCompanies",
+      "method": "GET",
+      "path": "/api/search",
+      "http_status": 402,
+      "payment_required": {
+        "x402Version": 2,
+        "error": "Payment required",
+        "resource": {
+          "url": "https://serbia-company-x402.vercel.app/api/search?q=air%20serbia",
+          "description": "Search active and proceeding Serbian companies by business name in Latin or Serbian Cyrillic, with normalized official APR results.",
+          "mimeType": "application/json",
+          "serviceName": "Serbia Company Data",
+          "tags": [
+            "serbia",
+            "company-search",
+            "registry"
+          ],
+          "iconUrl": "https://serbia-company-x402.vercel.app/favicon.svg"
+        },
+        "accepts": [
+          {
+            "scheme": "exact",
+            "network": "eip155:8453",
+            "amount": "10000",
+            "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+            "payTo": "0xcEE09f451355261E5f6a0271757638A55AF8Ae7b",
+            "maxTimeoutSeconds": 300,
+            "extra": {
+              "name": "USD Coin",
+              "version": "2"
+            }
+          }
+        ],
+        "extensions": {
+          "bazaar": {
+            "info": {
+              "input": {
+                "type": "http",
+                "queryParams": {
+                  "q": "Air Serbia",
+                  "limit": 5
+                },
+                "method": "GET"
+              },
+              "output": {
+                "type": "json",
+                "example": {
+                  "query": "Air Serbia",
+                  "count": 1,
+                  "results": [
+                    {
+                      "registrationNumber": "07044275",
+                      "businessName": "AIR SERBIA A.D. BEOGRAD",
+                      "status": "Aktivan",
+                      "incorporationDate": "1992-06-16",
+                      "legalForm": "Akcionarsko društvo",
+                      "activityCode": "5110"
+                    }
+                  ]
+                }
+              }
+            },
+            "schema": {
+              "$schema": "https://json-schema.org/draft/2020-12/schema",
+              "type": "object",
+              "properties": {
+                "input": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "const": "http"
+                    },
+                    "method": {
+                      "type": "string",
+                      "enum": [
+                        "GET"
+                      ]
+                    },
+                    "queryParams": {
+                      "type": "object",
+                      "properties": {
+                        "q": {
+                          "type": "string",
+                          "minLength": 3,
+                          "maxLength": 100
+                        },
+                        "limit": {
+                          "type": "integer",
+                          "minimum": 1,
+                          "maximum": 10,
+                          "default": 5
+                        }
+                      },
+                      "required": [
+                        "q"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "type",
+                    "method"
+                  ],
+                  "additionalProperties": false
+                },
+                "output": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string"
+                    },
+                    "example": {
+                      "type": "object",
+                      "properties": {
+                        "query": {
+                          "type": "string"
+                        },
+                        "count": {
+                          "type": "integer"
+                        },
+                        "results": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "registrationNumber": {
+                                "type": "string",
+                                "pattern": "^\\d{8}$"
+                              },
+                              "businessName": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "status": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "incorporationDate": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "legalForm": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "activityCode": {
+                                "type": [
+                                  "string",
+                                  "number",
+                                  "null"
+                                ]
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "required": [
+                    "type"
+                  ]
+                }
+              },
+              "required": [
+                "input"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "batchGetSerbianCompanies": {
+      "operationId": "batchGetSerbianCompanies",
+      "method": "POST",
+      "path": "/api/company/batch",
+      "http_status": 402,
+      "payment_required": {
+        "x402Version": 2,
+        "error": "Payment required",
+        "resource": {
+          "url": "https://serbia-company-x402.vercel.app/api/company/batch",
+          "description": "Look up as many as 10 Serbian company registration numbers in one official APR data response.",
+          "mimeType": "application/json",
+          "serviceName": "Serbia Company Data",
+          "tags": [
+            "serbia",
+            "company",
+            "batch",
+            "registry"
+          ],
+          "iconUrl": "https://serbia-company-x402.vercel.app/favicon.svg"
+        },
+        "accepts": [
+          {
+            "scheme": "exact",
+            "network": "eip155:8453",
+            "amount": "50000",
+            "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+            "payTo": "0xcEE09f451355261E5f6a0271757638A55AF8Ae7b",
+            "maxTimeoutSeconds": 300,
+            "extra": {
+              "name": "USD Coin",
+              "version": "2"
+            }
+          }
+        ],
+        "extensions": {
+          "bazaar": {
+            "info": {
+              "input": {
+                "type": "http",
+                "bodyType": "json",
+                "body": {
+                  "registrationNumbers": [
+                    "07044275",
+                    "20047216"
+                  ]
+                },
+                "method": "POST"
+              },
+              "output": {
+                "type": "json",
+                "example": {
+                  "count": 1,
+                  "results": [
+                    {
+                      "registrationNumber": "07044275",
+                      "company": {
+                        "registrationNumber": "07044275",
+                        "businessName": "AIR SERBIA A.D. BEOGRAD",
+                        "status": "Aktivan",
+                        "incorporationDate": "1992-06-16",
+                        "legalForm": "Akcionarsko društvo",
+                        "activityCode": "5110"
+                      }
+                    }
+                  ]
+                }
+              }
+            },
+            "schema": {
+              "$schema": "https://json-schema.org/draft/2020-12/schema",
+              "type": "object",
+              "properties": {
+                "input": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "const": "http"
+                    },
+                    "method": {
+                      "type": "string",
+                      "enum": [
+                        "POST"
+                      ]
+                    },
+                    "bodyType": {
+                      "type": "string",
+                      "enum": [
+                        "json",
+                        "form-data",
+                        "text"
+                      ]
+                    },
+                    "body": {
+                      "type": "object",
+                      "properties": {
+                        "registrationNumbers": {
+                          "type": "array",
+                          "minItems": 1,
+                          "maxItems": 10,
+                          "items": {
+                            "type": "string",
+                            "pattern": "^\\d{8}$"
+                          }
+                        }
+                      },
+                      "required": [
+                        "registrationNumbers"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "type",
+                    "method",
+                    "bodyType",
+                    "body"
+                  ],
+                  "additionalProperties": false
+                },
+                "output": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string"
+                    },
+                    "example": {
+                      "type": "object",
+                      "properties": {
+                        "count": {
+                          "type": "integer"
+                        },
+                        "results": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "registrationNumber": {
+                                "type": "string",
+                                "pattern": "^\\d{8}$"
+                              },
+                              "company": {
+                                "type": "object",
+                                "properties": {
+                                  "registrationNumber": {
+                                    "type": "string",
+                                    "pattern": "^\\d{8}$"
+                                  },
+                                  "businessName": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "status": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "incorporationDate": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "legalForm": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "activityCode": {
+                                    "type": [
+                                      "string",
+                                      "number",
+                                      "null"
+                                    ]
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "required": [
+                    "type"
+                  ]
+                }
+              },
+              "required": [
+                "input"
+              ]
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,35 @@
+generated: '2026-08-09'
+method: searched
+source: live probes of https://serbia-company-x402.vercel.app/.well-known/*
+host: https://serbia-company-x402.vercel.app
+documents:
+  - path: /.well-known/apis.json
+    status: 200
+    content_type: application/json
+    file: serbia-company-data-apis.json
+    note: >-
+      APIs.json 0.21 index the provider serves itself, naming one API with OpenAPI, Documentation,
+      Pricing and License properties. This is the machine-readable discovery document for the service.
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+  - path: /.well-known/x402
+    status: 404
+notes: >-
+  There is no OAuth/OIDC discovery surface because the API has no account, no API key and no OAuth —
+  access is gated per request by an x402 HTTP 402 payment challenge (see authentication/). The x402
+  payment requirements are published in the PAYMENT-REQUIRED response header on any unpaid call rather
+  than at a /.well-known/ path.

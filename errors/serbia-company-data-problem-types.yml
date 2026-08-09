@@ -1,0 +1,58 @@
+generated: '2026-08-09'
+method: derived
+source: openapi/serbia-company-data-openapi.json + live probes of https://serbia-company-x402.vercel.app
+format: bare-json
+problem_json: false
+envelope:
+  shape: '{ "error": "<snake_case_code>" }'
+  content_type: application/json
+  notes: >-
+    RFC 9457 application/problem+json is not used. The 402 response body is an empty JSON object; the
+    entire payment error contract lives in the base64 PAYMENT-REQUIRED response header instead.
+problems:
+  - status: 402
+    code: payment_required
+    title: Payment Required
+    detail: >-
+      An x402 v2 payment challenge. The response body is {} and the machine-readable requirements are
+      in the base64-encoded PAYMENT-REQUIRED header — x402Version, resource description, accepts[]
+      (scheme exact, network eip155:8453 Base, amount in USDC base units, asset, payTo,
+      maxTimeoutSeconds 300) and a bazaar extension carrying input/output examples and a JSON Schema.
+    remediation: >-
+      Re-send the request with a signed payment payload in the PAYMENT-SIGNATURE header using an
+      x402-compatible buyer client. Settlement comes back in PAYMENT-RESPONSE.
+    source_operation:
+      - openapi/serbia-company-data-openapi.json#getSerbianCompany
+      - openapi/serbia-company-data-openapi.json#searchSerbianCompanies
+      - openapi/serbia-company-data-openapi.json#batchGetSerbianCompanies
+    declared_in_spec: true
+    evidence: examples/serbia-company-data-402-payment-required.json
+  - status: 404
+    code: not_found
+    title: Route not found
+    detail: 'Observed body: {"error":"not_found"} for an unrouted path.'
+    remediation: Check the path against the OpenAPI paths or /.well-known/apis.json.
+    declared_in_spec: false
+    evidence:
+      url: https://serbia-company-x402.vercel.app/api/nope
+      http_status: 404
+gaps:
+  - >-
+    The OpenAPI declares only 200 and 402 per operation. No 400 (validation), 404 (company not found),
+    429 or 5xx responses are documented, so an agent has no declared contract for the failure modes it
+    will actually hit.
+  - >-
+    The payment gate fires ahead of input validation: /api/company?mb=abc and /api/search?q=a both
+    return 402, not 400. A caller cannot learn that a request is malformed without paying for it.
+  - >-
+    A transient HTTP 500 was observed once on /api/company during this pass and did not reproduce on
+    retry; no 5xx shape is documented.
+x-evidence:
+  fetched: '2026-08-09'
+  probes:
+    - url: https://serbia-company-x402.vercel.app/api/nope
+      http_status: 404
+    - url: https://serbia-company-x402.vercel.app/api/company?mb=abc
+      http_status: 402
+    - url: https://serbia-company-x402.vercel.app/api/search?q=a
+      http_status: 402

@@ -1,0 +1,64 @@
+generated: '2026-08-09'
+method: searched
+source: https://serbia-company-x402.vercel.app/ ("Try before paying") + live probes
+summary: >-
+  There is no test mode, no test key and no separate sandbox host — there are no accounts or keys at
+  all. What the provider publishes instead is a free, unpaid sample route plus published example
+  identifiers, so a caller can see the exact response shape before spending anything. Live and "test"
+  are the same environment; the only separation is priced routes vs free routes.
+test_vs_live:
+  separation: none — single environment
+  key_prefixes: null
+  modes: null
+  notes: Priced routes return HTTP 402; free routes return 200 with no payment challenge.
+free_routes:
+  - path: /api/sample
+    method: GET
+    status: 200
+    description: >-
+      Full worked example — the Air Serbia company profile with a complete latestFinancialStatement,
+      plus the dataset metadata envelope and the usage notice. Linked from the landing page as
+      "Try before paying".
+    captured: examples/serbia-company-data-sample-response.json
+  - path: /health
+    method: GET
+    status: 200
+    description: Liveness plus the payment network (eip155:8453), payment asset (USDC) and dataset metadata.
+    captured: examples/serbia-company-data-health-response.json
+  - path: /openapi.json
+    method: GET
+    status: 200
+    description: The served OpenAPI 3.1 document.
+  - path: /.well-known/apis.json
+    method: GET
+    status: 200
+    description: The APIs.json 0.21 discovery index.
+published_example_values:
+  registration_numbers:
+    - value: '07044275'
+      note: Air Serbia. Published as the example in the OpenAPI, the landing page and the free sample route.
+    - value: '20047216'
+      note: Second identifier in the OpenAPI batch requestBody example.
+  search_queries:
+    - value: Air Serbia
+      note: Published as the example query in the OpenAPI and the bazaar discovery block.
+  warning: >-
+    These are real companies in the live registry, not synthetic fixtures. Calling a priced route with
+    them costs real USDC.
+payment_dry_run:
+  supported: true
+  how: >-
+    Any unpaid call returns a 402 with the complete machine-readable PAYMENT-REQUIRED challenge —
+    price, asset, network, payTo address and timeout — so a buyer client can inspect the exact terms
+    before signing. Captured for all three priced operations in
+    examples/serbia-company-data-402-payment-required.json.
+  testnet: false
+  notes: >-
+    Only Base mainnet (eip155:8453) is advertised in accepts[]. No testnet network is offered, so
+    there is no way to exercise a full paid round trip without spending real USDC.
+buyer_setup:
+  docs: https://docs.x402.org/getting-started/quickstart-for-buyers
+  note: The provider points buyers at the official x402 buyer quickstart rather than shipping its own client.
+gaps:
+  - No Base Sepolia (or any testnet) accepts[] entry, so an integrator cannot complete a paid call end to end for free.
+  - No fixture or trigger tooling, and no way to simulate a settlement failure.

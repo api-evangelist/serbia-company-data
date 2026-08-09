@@ -1,0 +1,72 @@
+generated: '2026-08-09'
+method: searched
+source: https://serbia-company-x402.vercel.app/ + https://serbia-company-x402.vercel.app/health
+versioning:
+  scheme: none
+  api_version: '0.1.0'
+  data_schema_version: 1
+  notes: >-
+    No version segment in the path and no version header. info.version (0.1.0) in the served OpenAPI
+    and metadata.schemaVersion (1) in the payload are the only version signals. A schemaVersion field
+    is present in every metadata block, which gives the provider a place to signal a breaking payload
+    change even though no policy is published for it.
+data_currency:
+  cadence: monthly snapshot
+  registration_as_of: '2026-06-30'
+  financial_as_of: '2026-06-30'
+  downloaded_at: '2026-07-28T14:12:43.943Z'
+  generated_at: '2026-07-28T14:12:43.943Z'
+  company_count: 133802
+  scope_exclusions: sole proprietors excluded
+  publisher_caveat: >-
+    The provider states plainly that absence is not proof an entity does not exist, and that registry
+    or financial values may have changed since the snapshot.
+  notes: >-
+    The dataset is a point-in-time copy of two APR open-data snapshots joined on registration number.
+    The landing page describes a monthly public-data snapshot; as of this probe the served snapshot was
+    still the 2026-06-30 registry with a 2026-07-28 download, so no refresh had landed yet.
+upstream_sources:
+  publisher: Serbian Business Registers Agency (APR)
+  registration:
+    dataset: Register of Companies open-data snapshot
+    url: https://openapi.apr.gov.rs/api/opendata/companies
+    catalog: https://data.gov.rs/sr/datasets/api-za-registar-privrednikh-drushtava/
+  financial_statements:
+    dataset: Company financial-statements open-data snapshot
+    url: https://openapi.apr.gov.rs/api/opendata/companies/financial-statements
+    catalog: https://data.gov.rs/sr/datasets/api-za-registar-finansijskikh-izveshtaja-baza-fi-za-privredna-drushtva/
+  license: https://data.gov.rs/sr/terms/
+  license_name: Serbian Open Data License 1.0
+  license_identifier: SODL-1.0
+health:
+  endpoint: https://serbia-company-x402.vercel.app/health
+  status: 200
+  shape: '{ ok, service, network, paymentAsset, metadata }'
+  notes: >-
+    A machine-readable health route that also republishes the full dataset provenance metadata. It is
+    a liveness endpoint, not a status page — there is no incident history, no uptime record and no
+    subscribe surface.
+deprecation:
+  policy_url: null
+  sunset_header: false
+  notes: No deprecation or sunset policy is published.
+sla:
+  url: null
+  uptime_target: null
+status_page: null
+deprecated_operations: []
+gaps:
+  - No status page or incident history.
+  - No deprecation, sunset or breaking-change policy.
+  - No dated changelog; the only change signal is metadata.schemaVersion plus the snapshot dates.
+  - No published SLA or uptime target for a service that charges per call.
+cross_links:
+  conventions: conventions/serbia-company-data-conventions.yml
+  conformance: conformance/serbia-company-data-conformance.yml
+x-evidence:
+  fetched: '2026-08-09'
+  probes:
+    - url: https://serbia-company-x402.vercel.app/health
+      http_status: 200
+    - url: https://serbia-company-x402.vercel.app/
+      http_status: 200

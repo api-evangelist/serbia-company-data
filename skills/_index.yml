@@ -1,0 +1,15 @@
+generated: '2026-08-09'
+method: generated
+source: openapi/serbia-company-data-openapi.json + live probes 2026-08-09
+note: >-
+  The provider publishes no AGENTS.md or skill files of its own. These are API Evangelist packaged
+  operating instructions, grounded in operationIds verified present in the served OpenAPI.
+skills:
+  - file: serbia-company-data-lookup-serbian-company.md
+    name: Look up a Serbian company by registration number
+    api: openapi/serbia-company-data-openapi.json
+    operations: [getSerbianCompany]
+  - file: serbia-company-data-search-and-resolve.md
+    name: Search Serbian companies by name and resolve them in bulk
+    api: openapi/serbia-company-data-openapi.json
+    operations: [searchSerbianCompanies, batchGetSerbianCompanies]

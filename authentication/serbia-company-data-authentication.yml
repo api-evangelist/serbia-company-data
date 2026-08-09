@@ -1,0 +1,82 @@
+generated: '2026-08-09'
+method: searched
+source: https://serbia-company-x402.vercel.app/ + live PAYMENT-REQUIRED header capture
+docs: https://docs.x402.org/getting-started/quickstart-for-buyers
+summary:
+  types: [none, x402-payment]
+  api_key_in: []
+  oauth2_flows: []
+  accounts_required: false
+  api_keys_required: false
+notes: >-
+  This API has no identity-based authentication. There is no account, no signup, no API key and no
+  OAuth. Authorization is per-request and economic: an unpaid call to a priced route returns
+  HTTP 402 with an x402 v2 payment challenge, and the caller re-sends the request carrying a signed
+  payment payload. The OpenAPI declares no securitySchemes, which is a faithful reflection of that
+  model rather than an omission — but it also means the payment contract is invisible to any tool
+  that reads only the spec's security section (see gaps).
+schemes:
+  - name: x402
+    type: payment
+    protocol: x402
+    version: 2
+    transport: http
+    request_header: PAYMENT-SIGNATURE
+    challenge_header: PAYMENT-REQUIRED
+    settlement_header: PAYMENT-RESPONSE
+    challenge_status: 402
+    encoding: base64-encoded JSON
+    sources: [openapi/serbia-company-data-openapi.json]
+    spec: https://github.com/x402-foundation/x402/blob/main/specs/transports-v2/http.md
+    accepts:
+      - scheme: exact
+        network: eip155:8453
+        network_name: Base
+        asset: '0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913'
+        asset_name: USD Coin
+        asset_version: '2'
+        pay_to: '0xcEE09f451355261E5f6a0271757638A55AF8Ae7b'
+        max_timeout_seconds: 300
+    extensions:
+      - name: bazaar
+        note: >-
+          Each 402 challenge carries a bazaar discovery block with the route's input/output example
+          and a JSON Schema 2020-12 document — harvested to json-schema/.
+unauthenticated_operations:
+  - path: /api/sample
+    method: get
+    note: Free Air Serbia sample response, no payment challenge. Not declared in the OpenAPI.
+  - path: /health
+    method: get
+    note: Service health plus dataset snapshot metadata. Not declared in the OpenAPI.
+paid_operations:
+  - operationId: getSerbianCompany
+    price_usd: '0.01'
+  - operationId: searchSerbianCompanies
+    price_usd: '0.01'
+  - operationId: batchGetSerbianCompanies
+    price_usd: '0.05'
+gaps:
+  - >-
+    The OpenAPI has no securitySchemes entry for the payment gate. An x402 scheme is not yet an
+    OpenAPI securityScheme type, but the per-operation x-payment-info extension is present and could
+    be complemented by a documented scheme so spec-only consumers see the 402 contract.
+  - >-
+    The 402 challenge is returned before request validation — an invalid mb or a too-short q also
+    returns 402 rather than 400, so a caller cannot distinguish a malformed request from an unpaid one
+    without paying first.
+cross_links:
+  conventions: conventions/serbia-company-data-conventions.yml
+  errors: errors/serbia-company-data-problem-types.yml
+  examples: examples/serbia-company-data-402-payment-required.json
+x-evidence:
+  fetched: '2026-08-09'
+  probes:
+    - url: https://serbia-company-x402.vercel.app/api/company?mb=07044275
+      http_status: 402
+    - url: https://serbia-company-x402.vercel.app/api/search?q=air%20serbia
+      http_status: 402
+    - url: https://serbia-company-x402.vercel.app/api/company/batch
+      http_status: 402
+    - url: https://serbia-company-x402.vercel.app/api/sample
+      http_status: 200

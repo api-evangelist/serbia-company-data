@@ -1,0 +1,145 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Serbia Company Data
+  version: 1.0.0
+extends: openapi/serbia-company-data-openapi.json
+x-generated: '2026-08-09'
+x-method: generated
+x-source: >-
+  Derived from live probes of https://serbia-company-x402.vercel.app on 2026-08-09. Every addition
+  below is either observed behaviour or a pointer to an artifact in this repo. Nothing here changes
+  the provider's own document.
+actions:
+  - target: $.info
+    description: Catalog identity and provenance.
+    update:
+      x-apievangelist-slug: serbia-company-data
+      x-apievangelist-enriched: '2026-08-09'
+      x-payment-protocol: x402
+      x-payment-protocol-version: 2
+      x-data-publisher: Serbian Business Registers Agency (APR)
+      x-data-license: SODL-1.0
+      x-monetary-unit: thousand_RSD
+      x-snapshot-as-of: '2026-06-30'
+      x-company-count: 133802
+
+  - target: $.info
+    description: Tag the whole API so it lands in the right catalog areas.
+    update:
+      x-tags:
+        - serbia
+        - company-data
+        - business-registry
+        - open-data
+        - x402
+        - base-usdc
+        - financial-statements
+        - pay-per-call
+        - agent-native
+
+  - target: $.paths['/api/company'].get
+    description: Bind the operation to its observed 402 contract and the derived agent-access class.
+    update:
+      tags: [companies]
+      description: >-
+        Returns one normalized company profile keyed by the 8-digit Serbian registration number
+        (maticni broj), including registry status, legal form, activity code, municipality and the
+        latest public financial summary. The response also carries a municipality object that the
+        declared schema omits.
+      x-agentic-access:
+        action-class: connected
+        consequence: read
+        token:
+          max-ttl: 3600
+        audit: none
+      x-apievangelist-error-catalog: errors/serbia-company-data-problem-types.yml
+      x-apievangelist-402-evidence: examples/serbia-company-data-402-payment-required.json
+
+  - target: $.paths['/api/search'].get
+    description: Tag and describe the discovery path.
+    update:
+      tags: [companies]
+      description: >-
+        Ranked search over registered business names. Accepts Serbian Latin and Cyrillic input.
+        Returns at most `limit` results (1-10, default 5); there is no pagination past that cap.
+      x-agentic-access:
+        action-class: connected
+        consequence: read
+        token:
+          max-ttl: 3600
+        audit: none
+
+  - target: $.paths['/api/company/batch'].post
+    description: Tag the batch operation; note it is a read despite the POST verb.
+    update:
+      tags: [companies]
+      description: >-
+        Resolves up to 10 registration numbers in a single billable call. POST is used to carry the
+        identifier list in a body; the operation is read-only and has no side effects.
+      x-agentic-access:
+        action-class: connected
+        consequence: read
+        token:
+          max-ttl: 3600
+        audit: none
+
+  - target: $.paths
+    description: >-
+      Add the two live, free, undeclared routes that the provider links from its landing page but
+      omits from the served OpenAPI. Both were probed at HTTP 200 on 2026-08-09.
+    update:
+      /api/sample:
+        get:
+          operationId: getSerbianCompanySample
+          summary: Free sample company profile
+          tags: [companies]
+          description: >-
+            Free, unpaid worked example (Air Serbia) with a complete latestFinancialStatement, the
+            dataset provenance metadata block and the usage notice. No payment challenge.
+          x-apievangelist-observed: '2026-08-09'
+          x-apievangelist-captured: examples/serbia-company-data-sample-response.json
+          responses:
+            '200':
+              description: Sample company profile with dataset metadata
+              content:
+                application/json:
+                  schema:
+                    type: object
+                    properties:
+                      sample: {type: object}
+                      metadata: {type: object}
+                      notice: {type: string}
+      /health:
+        get:
+          operationId: getServiceHealth
+          summary: Service health and dataset provenance
+          tags: [operations]
+          description: >-
+            Liveness check that also republishes the payment network, payment asset and the full
+            dataset metadata (snapshot dates, company count, APR source URLs, license, monetary unit).
+          x-apievangelist-observed: '2026-08-09'
+          x-apievangelist-captured: examples/serbia-company-data-health-response.json
+          responses:
+            '200':
+              description: Service is up
+              content:
+                application/json:
+                  schema:
+                    type: object
+                    properties:
+                      ok: {type: boolean}
+                      service: {type: string}
+                      network: {type: string}
+                      paymentAsset: {type: string}
+                      metadata: {type: object}
+
+  - target: $
+    description: >-
+      Declare the tags used above. The provider's document declares none, so every operation is
+      untagged in the original.
+    update:
+      tags:
+        - name: companies
+          description: Serbian company registry lookups and search.
+        - name: operations
+          description: Service health and dataset provenance.

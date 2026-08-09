@@ -1,0 +1,71 @@
+generated: '2026-08-09'
+method: derived
+source: openapi/serbia-company-data-openapi.json + examples/serbia-company-data-sample-response.json
+summary: >-
+  A deliberately flat model. One root entity (Company) keyed by the 8-digit Serbian registration
+  number, with an embedded latest financial statement and an embedded municipality. The OpenAPI uses
+  no components.schemas and no $ref — every response schema is inlined per operation — so the entity
+  graph below is derived from the inline shapes plus the live sample response, which carries fields
+  the spec does not name.
+entities:
+  - name: Company
+    key: registrationNumber
+    key_format: 8-digit Serbian maticni broj (MB), pattern ^\d{8}$
+    source_of_truth: APR Register of Companies open-data snapshot
+    fields:
+      - {name: registrationNumber, type: string, nullable: false}
+      - {name: businessName, type: string, nullable: true}
+      - {name: status, type: string, nullable: true, note: Serbian Cyrillic registry status, e.g. Активан}
+      - {name: incorporationDate, type: string, format: date, nullable: true}
+      - {name: legalForm, type: string, nullable: true, note: Serbian Cyrillic, e.g. Акционарско друштво}
+      - {name: activityCode, type: [string, number], nullable: true, note: Serbian activity classification code}
+      - {name: municipality, type: object, nullable: true, note: Present in the live sample response but NOT declared in the OpenAPI schema}
+      - {name: latestFinancialStatement, type: object, nullable: true}
+  - name: Municipality
+    key: code
+    embedded_in: Company
+    fields:
+      - {name: code, type: string, note: e.g. 70181}
+      - {name: name, type: string, note: Serbian Cyrillic, e.g. НОВИ БЕОГРАД}
+    note: Undeclared in the OpenAPI; observed in examples/serbia-company-data-sample-response.json.
+  - name: FinancialStatement
+    key: year
+    embedded_in: Company
+    source_of_truth: APR company financial-statements open-data snapshot
+    cardinality: latest only — no history is exposed
+    fields:
+      - {name: year, type: integer}
+      - {name: amounts, type: object}
+      - {name: averageEmployees, type: object, note: '{value, aop}'}
+  - name: FinancialAmount
+    embedded_in: FinancialStatement
+    fields:
+      - {name: value, type: number}
+      - {name: unit, type: string, const: thousand_RSD}
+      - {name: aop, type: string, note: APR AOP financial-statement line code}
+    observed_measures:
+      - {key: totalAssets, aop: '0059'}
+      - {key: equity, aop: '0401'}
+      - {key: accumulatedLoss, aop: '0412'}
+      - {key: totalRevenue, aop: '1043'}
+      - {key: netProfit, aop: '1055'}
+      - {key: netLoss, aop: '1056'}
+      - {key: averageEmployees, aop: '9005'}
+  - name: DatasetMetadata
+    note: >-
+      Provenance envelope returned by /api/sample and /health — schemaVersion, generatedAt,
+      downloadedAt, registrationAsOf, financialAsOf, companyCount, sources (publisher + dataset URLs +
+      catalog URLs), license, transformed/transformation, monetaryUnit.
+relationships:
+  - {from: Company, to: Municipality, kind: has_one, via: municipality}
+  - {from: Company, to: FinancialStatement, kind: has_one, via: latestFinancialStatement}
+  - {from: FinancialStatement, to: FinancialAmount, kind: has_many, via: amounts}
+access_paths:
+  - {operationId: getSerbianCompany, entity: Company, by: registrationNumber, cardinality: one}
+  - {operationId: searchSerbianCompanies, entity: Company, by: businessName, cardinality: up to 10}
+  - {operationId: batchGetSerbianCompanies, entity: Company, by: registrationNumbers, cardinality: up to 10}
+gaps:
+  - The OpenAPI declares no components.schemas, so the Company shape is repeated inline three times and cannot be $ref'd or reused by generators.
+  - municipality is returned by the live API but is missing from every declared response schema.
+  - latestFinancialStatement is typed only as object/null in the spec; its real structure (amounts with unit + AOP codes) is undocumented and only discoverable from the sample response.
+  - No financial-statement history — only the latest year is exposed.
