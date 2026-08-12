@@ -19,41 +19,46 @@ tags:
   - pay-per-call
   - agent-native
 apis:
-  - name: Serbia Company Data API
-    description: >-
-      REST API for Serbian company profiles, name search, and batch lookups, with the latest public financial summaries.
-      Endpoints are gated by x402/Base-USDC micropayments except a free sample endpoint.
-    humanURL: https://serbia-company-x402.vercel.app
-    baseURL: https://serbia-company-x402.vercel.app
-    tags:
-      - serbia
-      - company-data
-      - business-registry
-      - open-data
-      - x402
-      - base-usdc
-      - openapi
-      - financial-statements
-      - pay-per-call
-      - agent-native
-    properties:
-      - type: OpenAPI
-        url: https://serbia-company-x402.vercel.app/openapi.json
-      - type: OpenAPI
-        name: OpenAPI 3.1 (harvested verbatim 2026-08-09)
-        url: openapi/serbia-company-data-openapi.json
-      - type: Documentation
-        url: https://serbia-company-x402.vercel.app
-      - type: DeveloperPortal
-        url: https://serbia-company-x402.vercel.app
-      - type: APIsJSON
-        url: https://serbia-company-x402.vercel.app/.well-known/apis.json
-      - type: Pricing
-        name: Per-call USDC pricing published on the landing page
-        url: https://serbia-company-x402.vercel.app
-      - type: License
-        name: Serbian Open Data License 1.0 (SODL-1.0)
-        url: https://data.gov.rs/sr/terms/
+- aid: serbia-company-data:serbia-company-data-company-api
+  name: Serbia Company Data Company API
+  description: The Company API from Serbia Company Data — 2 operation(s) for company.
+  humanURL: https://serbia-company-x402.vercel.app
+  baseURL: https://serbia-company-x402.vercel.app
+  tags:
+  - Company
+  properties:
+  - type: OpenAPI
+    url: openapi/serbia-company-data-company-api-openapi.yml
+  - type: Documentation
+    url: https://serbia-company-x402.vercel.app
+  - type: DeveloperPortal
+    url: https://serbia-company-x402.vercel.app
+  - type: APIsJSON
+    url: https://serbia-company-x402.vercel.app/.well-known/apis.json
+  - type: Pricing
+    url: https://serbia-company-x402.vercel.app
+  - type: License
+    url: https://data.gov.rs/sr/terms/
+- aid: serbia-company-data:serbia-company-data-search-api
+  name: Serbia Company Data Search API
+  description: The Search API from Serbia Company Data — 1 operation(s) for search.
+  humanURL: https://serbia-company-x402.vercel.app
+  baseURL: https://serbia-company-x402.vercel.app
+  tags:
+  - Search
+  properties:
+  - type: OpenAPI
+    url: openapi/serbia-company-data-search-api-openapi.yml
+  - type: Documentation
+    url: https://serbia-company-x402.vercel.app
+  - type: DeveloperPortal
+    url: https://serbia-company-x402.vercel.app
+  - type: APIsJSON
+    url: https://serbia-company-x402.vercel.app/.well-known/apis.json
+  - type: Pricing
+    url: https://serbia-company-x402.vercel.app
+  - type: License
+    url: https://data.gov.rs/sr/terms/
 image: https://serbia-company-x402.vercel.app/favicon.svg
 maintainers:
   - FN: Serbia Company Data
