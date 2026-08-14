@@ -5,7 +5,7 @@ description: >-
   the x402 protocol settled in Base USDC, requiring no account or API key.
 url: https://serbia-company-data.apievangelist.com/apis.yml
 created: '2026-07-28'
-modified: '2026-08-09'
+modified: '2026-08-14'
 specificationVersion: '0.21'
 tags:
   - serbia
@@ -29,6 +29,10 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/serbia-company-data-company-api-openapi.yml
+  - type: PostmanCollection
+    url: collections/serbia-company-data-company-api.postman_collection.json
+  - type: OpenCollection
+    url: collections/serbia-company-data-company-api.opencollection.json
   - type: Documentation
     url: https://serbia-company-x402.vercel.app
   - type: DeveloperPortal
@@ -49,6 +53,10 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/serbia-company-data-search-api-openapi.yml
+  - type: PostmanCollection
+    url: collections/serbia-company-data-search-api.postman_collection.json
+  - type: OpenCollection
+    url: collections/serbia-company-data-search-api.opencollection.json
   - type: Documentation
     url: https://serbia-company-x402.vercel.app
   - type: DeveloperPortal
@@ -118,8 +126,20 @@ common:
 - type: AgentSkill
   name: Packaged agent skills grounded in the published operationIds
   url: skills/_index.yml
+- type: Plans
+  name: Pay-per-call pricing — no tiers; price published per route and carried in the 402 challenge
+  url: plans/serbia-company-data-plans-pricing.yml
+- type: Pricing
+  name: Published per-route USDC pricing on the landing page
+  url: https://serbia-company-x402.vercel.app/
+- type: RateLimits
+  name: Rate-limit probe — none published, no RateLimit headers observed
+  url: rate-limits/serbia-company-data-rate-limits.yml
+- type: Examples
+  name: Health + dataset provenance metadata response (captured verbatim)
+  url: examples/serbia-company-data-health-response.json
 x-enrichment:
-  date: '2026-08-09'
+  date: '2026-08-14'
   status: enriched
-  artifacts_added: 24
+  artifacts_added: 3
   pass: local-v1
