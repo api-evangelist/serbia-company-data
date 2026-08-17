@@ -3,7 +3,7 @@ description: >-
   A single-purpose, pay-per-call REST API serving normalized Serbian company registry data and latest
   financial-statement summaries from official APR high-value open data. Access is gated by HTTP 402 micropayments via
   the x402 protocol settled in Base USDC, requiring no account or API key.
-url: https://serbia-company-data.apievangelist.com/apis.yml
+url: https://raw.githubusercontent.com/api-evangelist/serbia-company-data/refs/heads/main/apis.yml
 created: '2026-07-28'
 modified: '2026-08-14'
 specificationVersion: '0.21'
