@@ -1,0 +1,51 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Serbia Data Company API",
+    "version": "0.1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Company",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get one Serbian company profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://serbia-company-x402.vercel.app/api/company",
+            "params": [
+              {
+                "name": "mb",
+                "value": "07044275",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get one Serbian company profile"
+        },
+        {
+          "info": {
+            "name": "Get as many as 10 Serbian company profiles",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://serbia-company-x402.vercel.app/api/company/batch",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get as many as 10 Serbian company profiles"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

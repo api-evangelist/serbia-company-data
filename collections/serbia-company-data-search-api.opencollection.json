@@ -1,0 +1,41 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Serbia Company Data Search API",
+    "version": "0.1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Search",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search Serbian companies by registered business name",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://serbia-company-x402.vercel.app/api/search",
+            "params": [
+              {
+                "name": "q",
+                "value": "Air Serbia",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Search Serbian companies by registered business name"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

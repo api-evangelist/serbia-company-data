@@ -1,12 +1,12 @@
 ---
 name: Look up a Serbian company by registration number
 description: Resolve one official Serbian company profile — registry status, legal form, activity code, municipality and the latest public financial summary — from its 8-digit registration number, paying per call with x402 on Base.
-api: openapi/serbia-company-data-openapi.json
+api: openapi/_original/serbia-company-data-openapi.json
 operations:
   - getSerbianCompany
 generated: '2026-08-09'
 method: generated
-source: openapi/serbia-company-data-openapi.json + live probes 2026-08-09
+source: openapi/_original/serbia-company-data-openapi.json + live probes 2026-08-09
 ---
 
 # Look up a Serbian company by registration number

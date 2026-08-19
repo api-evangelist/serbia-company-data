@@ -1,0 +1,116 @@
+generated: '2026-08-14'
+method: searched
+source: https://serbia-company-x402.vercel.app/ (published price per route) + live x402 PAYMENT-REQUIRED
+  challenge decoded from every priced operation
+docs: https://serbia-company-x402.vercel.app/
+summary: >-
+  There are no subscription plans, no tiers, no free allowance and no enterprise contract. Pricing is
+  pure pay-per-call, quoted per route in USD-denominated Base USDC and enforced at request time by an
+  HTTP 402 x402 challenge. Because the price is carried in the machine-readable PAYMENT-REQUIRED
+  header on every unpaid call, the pricing is not just published — it is a runtime contract an agent
+  can read and evaluate before signing, which is a stronger form of pricing transparency than a
+  pricing page. Both the human-readable price on the landing page and the on-wire amount were captured
+  and they agree.
+pricing_model: pay-per-call
+plan_count: 0
+plans: []
+currency: USD
+settlement:
+  asset: USD Coin (USDC)
+  asset_contract: '0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913'
+  asset_version: '2'
+  network: eip155:8453
+  network_name: Base mainnet
+  pay_to: '0xcEE09f451355261E5f6a0271757638A55AF8Ae7b'
+  scheme: exact
+  max_timeout_seconds: 300
+  protocol: x402 v2
+  testnet_offered: false
+  notes: >-
+    Only Base mainnet is advertised in accepts[]. There is no testnet price and no invoicing, so every
+    successful call is an on-chain USDC settlement at the moment of the request.
+metered_prices:
+  - operationId: getSerbianCompany
+    path: /api/company
+    method: GET
+    price_usd: '0.01'
+    on_wire_amount: '10000'
+    on_wire_units: USDC base units (6 decimals)
+    unit: per successful call
+    quota: 1 company profile
+  - operationId: searchSerbianCompanies
+    path: /api/search
+    method: GET
+    price_usd: '0.01'
+    on_wire_amount: '10000'
+    on_wire_units: USDC base units (6 decimals)
+    unit: per successful call
+    quota: up to 10 ranked matches (limit param, default 5)
+  - operationId: batchGetSerbianCompanies
+    path: /api/company/batch
+    method: POST
+    price_usd: '0.05'
+    on_wire_amount: '50000'
+    on_wire_units: USDC base units (6 decimals)
+    unit: per successful call
+    quota: up to 10 company profiles per request
+    notes: >-
+      At 10 registration numbers the batch route works out to $0.005 per company, half the single
+      lookup price — the only volume discount in the price list.
+free_tier:
+  exists: true
+  form: unpriced routes rather than an allowance
+  routes:
+    - path: /api/sample
+      note: Full worked Air Serbia profile with dataset provenance metadata. "Try before paying".
+    - path: /health
+      note: Liveness plus payment network, payment asset and snapshot metadata.
+    - path: /openapi.json
+      note: The served OpenAPI 3.1 document.
+    - path: /.well-known/apis.json
+      note: The APIs.json 0.21 discovery index.
+  notes: >-
+    There is no free quota of priced calls. The free surface is a fixed set of routes that are never
+    payment-gated, so a buyer can inspect the response shape and the dataset provenance at zero cost
+    but cannot query the registry without paying.
+commercial_terms:
+  accounts_required: false
+  api_keys_required: false
+  signup_url: null
+  minimum_spend: null
+  commitment: none
+  refunds: not published
+  invoicing: none — settlement is per request on-chain
+  overage: not applicable — there is no included quota to exceed
+  volume_discount: >-
+    Only the implicit one in the batch route ($0.05 for up to 10 profiles vs $0.01 each).
+  enterprise_contact: not published
+gaps:
+  - No refund, dispute or failed-response credit policy is published for a service that takes payment
+    before it can confirm a result exists — a paid lookup for an unknown registration number still
+    costs $0.01.
+  - No testnet price, so a buyer cannot exercise a full paid round trip without spending real USDC.
+  - The resource is not registered in the Coinbase CDP x402 bazaar discovery index (15,392 resources
+    scanned 2026-08-14, zero matches) even though every 402 challenge carries a complete bazaar
+    extension block — the pricing is machine-readable at the endpoint but not discoverable from the
+    index buyers browse.
+cross_links:
+  authentication: authentication/serbia-company-data-authentication.yml
+  rate_limits: rate-limits/serbia-company-data-rate-limits.yml
+  sandbox: sandbox/serbia-company-data-sandbox.yml
+  examples: examples/serbia-company-data-402-payment-required.json
+x-evidence:
+  fetched: '2026-08-14'
+  probes:
+    - url: https://serbia-company-x402.vercel.app/
+      http_status: 200
+      note: Landing page publishes $0.01 / $0.01 / $0.05 USDC per route.
+    - url: https://serbia-company-x402.vercel.app/api/company?mb=07044275
+      http_status: 402
+      note: PAYMENT-REQUIRED header decodes to accepts[0].amount 10000 (0.01 USDC, 6 decimals).
+    - url: https://serbia-company-x402.vercel.app/api/sample
+      http_status: 200
+      note: Free route, no payment challenge.
+    - url: https://api.cdp.coinbase.com/platform/v2/x402/discovery/resources
+      http_status: 200
+      note: Full index scanned (15,392 resources); this provider is not listed.

@@ -1,0 +1,161 @@
+{
+  "item": [
+    {
+      "id": "9f1de618-00ec-4ad9-8ff5-038c189224b9",
+      "name": "Search",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8b4e26ec-7b0e-4980-be14-567ba6ae28ba",
+          "name": "Search Serbian companies by registered business name",
+          "request": {
+            "name": "Search Serbian companies by registered business name",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "5"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "aaf79073-951b-4e57-bd27-7c044cedc3f0",
+              "name": "Ranked official company matches",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "Air Serbia"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "5"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"results\": [\n    {\n      \"registrationNumber\": \"39467662\",\n      \"businessName\": null,\n      \"status\": null,\n      \"incorporationDate\": null,\n      \"legalForm\": \"string\",\n      \"activityCode\": 8618.47217496035,\n      \"latestFinancialStatement\": null\n    },\n    {\n      \"registrationNumber\": \"80424651\",\n      \"businessName\": \"string\",\n      \"status\": null,\n      \"incorporationDate\": \"1960-04-14\",\n      \"legalForm\": \"string\",\n      \"activityCode\": \"string\",\n      \"latestFinancialStatement\": {}\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8831ac40-7577-44c1-93a8-34be1aa4f2ca",
+              "name": "Payment Required",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "Air Serbia"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "5"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Payment Required",
+              "code": 402,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://serbia-company-x402.vercel.app",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "bb822a45-06fb-4932-90c3-476d6e8d63b8",
+    "name": "Serbia Company Data Search API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Normalized Serbian company registry and latest financial-statement summaries from official APR high-value open data.",
+      "type": "text/plain"
+    }
+  }
+}

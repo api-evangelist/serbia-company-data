@@ -1,6 +1,6 @@
 generated: '2026-08-09'
 method: derived
-source: openapi/serbia-company-data-openapi.json + live probes + examples/serbia-company-data-402-payment-required.json
+source: openapi/_original/serbia-company-data-openapi.json + live probes + examples/serbia-company-data-402-payment-required.json
 standards:
   - id: openapi-3.1
     conforms: true
@@ -55,6 +55,21 @@ standards:
     evidence: >-
       The accepts[] entry names USD Coin version 2 on Base with an exact-scheme payTo address, the
       EIP-3009 authorization form the x402 exact/EVM scheme settles with.
+discovery_index:
+  registered: false
+  index: Coinbase CDP x402 bazaar discovery index
+  url: https://api.cdp.coinbase.com/platform/v2/x402/discovery/resources
+  checked: '2026-08-14'
+  resources_scanned: 15392
+  matches: 0
+  notes: >-
+    Every 402 challenge this API returns carries a complete bazaar extension block — the exact
+    discovery payload the x402 Bazaar indexes — yet the resource does not appear anywhere in the CDP
+    discovery index. The full index was paged (offset pagination, 15,392 resources, 2026-08-14) with
+    zero matches on the host or the description. The service is machine-discoverable at the endpoint
+    but not from the catalog a buyer agent browses, which is the single cheapest agent-reach fix
+    available to this provider.
+
 data_licensing:
   license: Serbian Open Data License 1.0
   identifier: SODL-1.0

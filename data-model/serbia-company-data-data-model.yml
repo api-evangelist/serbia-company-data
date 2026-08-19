@@ -1,6 +1,6 @@
 generated: '2026-08-09'
 method: derived
-source: openapi/serbia-company-data-openapi.json + examples/serbia-company-data-sample-response.json
+source: openapi/_original/serbia-company-data-openapi.json + examples/serbia-company-data-sample-response.json
 summary: >-
   A deliberately flat model. One root entity (Company) keyed by the 8-digit Serbian registration
   number, with an embedded latest financial statement and an embedded municipality. The OpenAPI uses

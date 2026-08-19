@@ -1,0 +1,60 @@
+generated: '2026-08-14'
+method: searched
+source: registry searches (npm, PyPI, GitHub) + https://serbia-company-x402.vercel.app/ + the served
+  OpenAPI and apis.json
+summary: >-
+  The provider ships no client libraries. There is no SDK, no CLI, no helper package and no first-party
+  source repository in any public registry. This is consistent with the product: the API is three
+  unauthenticated HTTP routes with no account, no key and no token lifecycle to wrap, so the only
+  client-side machinery a caller needs is a generic x402 buyer wallet client — which the x402 project
+  publishes, not this provider. Recorded as an honest zero, not a gap to paper over: no `SDKs` pointer
+  is emitted, because none exists.
+package_count: 0
+official_package_count: 0
+packages: []
+registries_checked:
+  - registry: npm
+    query: 'serbia company data / serbia-company-x402'
+    result: no first-party package
+    checked: '2026-08-14'
+  - registry: pypi
+    query: serbia-company-data
+    result: 404 — no such project
+    checked: '2026-08-14'
+  - registry: github
+    query: serbia-company-x402
+    result: >-
+      One repository, api-evangelist/serbia-company-data — this catalog profile. No provider-owned
+      repository exists.
+    checked: '2026-08-14'
+  - registry: maven-central
+    result: not applicable — no JVM surface published or implied
+    checked: '2026-08-14'
+  - registry: nuget
+    result: not applicable — no .NET surface published or implied
+    checked: '2026-08-14'
+  - registry: rubygems
+    result: not applicable — no Ruby surface published or implied
+    checked: '2026-08-14'
+  - registry: crates.io
+    result: not applicable — no Rust surface published or implied
+    checked: '2026-08-14'
+  - registry: packagist
+    result: not applicable — no PHP surface published or implied
+    checked: '2026-08-14'
+  - registry: pkg.go.dev
+    result: not applicable — no Go surface published or implied
+    checked: '2026-08-14'
+third_party_client_requirement:
+  needed: true
+  what: an x402 buyer client capable of signing an EIP-3009 USDC authorization on Base
+  first_party: false
+  reference: https://docs.x402.org/getting-started/quickstart-for-buyers
+  note: >-
+    The provider links the official x402 buyer quickstart from its landing page rather than shipping
+    its own client. That is a reasonable choice for a three-route API, but it means the integration
+    burden — wallet, signing, retry-after-payment — sits entirely with the caller.
+cross_links:
+  authentication: authentication/serbia-company-data-authentication.yml
+  plans: plans/serbia-company-data-plans-pricing.yml
+  mcp: mcp/serbia-company-data-mcp.yml

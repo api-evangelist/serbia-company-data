@@ -1,13 +1,13 @@
 ---
 name: Search Serbian companies by name and resolve them in bulk
 description: Find Serbian companies by business name in Latin or Cyrillic, then resolve the matched registration numbers into full profiles in one batched, cheaper call.
-api: openapi/serbia-company-data-openapi.json
+api: openapi/_original/serbia-company-data-openapi.json
 operations:
   - searchSerbianCompanies
   - batchGetSerbianCompanies
 generated: '2026-08-09'
 method: generated
-source: openapi/serbia-company-data-openapi.json + live probes 2026-08-09
+source: openapi/_original/serbia-company-data-openapi.json + live probes 2026-08-09
 ---
 
 # Search Serbian companies by name and resolve them in bulk

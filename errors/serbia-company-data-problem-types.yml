@@ -1,6 +1,6 @@
 generated: '2026-08-09'
 method: derived
-source: openapi/serbia-company-data-openapi.json + live probes of https://serbia-company-x402.vercel.app
+source: openapi/_original/serbia-company-data-openapi.json + live probes of https://serbia-company-x402.vercel.app
 format: bare-json
 problem_json: false
 envelope:
@@ -22,9 +22,9 @@ problems:
       Re-send the request with a signed payment payload in the PAYMENT-SIGNATURE header using an
       x402-compatible buyer client. Settlement comes back in PAYMENT-RESPONSE.
     source_operation:
-      - openapi/serbia-company-data-openapi.json#getSerbianCompany
-      - openapi/serbia-company-data-openapi.json#searchSerbianCompanies
-      - openapi/serbia-company-data-openapi.json#batchGetSerbianCompanies
+      - openapi/_original/serbia-company-data-openapi.json#getSerbianCompany
+      - openapi/_original/serbia-company-data-openapi.json#searchSerbianCompanies
+      - openapi/_original/serbia-company-data-openapi.json#batchGetSerbianCompanies
     declared_in_spec: true
     evidence: examples/serbia-company-data-402-payment-required.json
   - status: 404

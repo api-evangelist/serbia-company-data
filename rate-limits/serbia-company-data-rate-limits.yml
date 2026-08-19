@@ -1,0 +1,72 @@
+generated: '2026-08-14'
+method: probed
+source: live header capture on every published route + https://serbia-company-x402.vercel.app/
+summary: >-
+  No rate limit is published and none was observed. The provider documents no quota, no burst
+  allowance and no throttling policy, and returns no rate-limit response headers on any route —
+  priced or free. Price is the de facto throttle: every priced call costs USDC, so there is no
+  economic need for a request ceiling, but that also means an agent has no runtime signal telling it
+  when to back off, and no documented behaviour if the provider ever starts shedding load.
+limit_count: 0
+limits: []
+response_headers:
+  standard_ratelimit_headers: false
+  x_ratelimit_headers: false
+  retry_after: false
+  observed:
+    - name: cache-control
+      value: 'public, max-age=0, must-revalidate'
+    - name: strict-transport-security
+      value: 'max-age=63072000; includeSubDomains; preload'
+    - name: x-vercel-id
+      value: present
+      note: Vercel edge request identifier — platform infrastructure, not a documented API contract.
+  notes: >-
+    Header capture on 2026-08-14 across /, /health, /api/sample, /openapi.json and the three priced
+    routes returned no RateLimit-*, no X-RateLimit-*, and no Retry-After on any response.
+exhaustion:
+  status_code: null
+  body: null
+  notes: >-
+    No 429 is declared in the OpenAPI, none was observed, and no throttling behaviour is documented.
+    The only non-200 status the API is specified to return is 402 Payment Required.
+structural_caps:
+  notes: >-
+    These are per-request size caps declared in the OpenAPI, NOT rate limits — they bound how much one
+    paid call returns, not how many calls a caller may make.
+  caps:
+    - operationId: searchSerbianCompanies
+      param: limit
+      min: 1
+      max: 10
+      default: 5
+    - operationId: batchGetSerbianCompanies
+      param: registrationNumbers
+      min_items: 1
+      max_items: 10
+platform_limits:
+  host: Vercel
+  notes: >-
+    The service runs on Vercel, whose platform-level DDoS and function limits apply underneath, but
+    the provider publishes no first-party limit and Vercel's ceilings are not an API contract the
+    caller can rely on or read.
+gaps:
+  - No published rate-limit policy for a metered, account-less API.
+  - No RateLimit-* / Retry-After headers, so an agent has no runtime backoff signal.
+  - No documented 429 behaviour or degradation contract.
+cross_links:
+  plans: plans/serbia-company-data-plans-pricing.yml
+  conventions: conventions/serbia-company-data-conventions.yml
+  authentication: authentication/serbia-company-data-authentication.yml
+x-evidence:
+  fetched: '2026-08-14'
+  probes:
+    - url: https://serbia-company-x402.vercel.app/api/company?mb=07044275
+      http_status: 402
+      note: No rate-limit headers present.
+    - url: https://serbia-company-x402.vercel.app/api/sample
+      http_status: 200
+      note: No rate-limit headers present.
+    - url: https://serbia-company-x402.vercel.app/health
+      http_status: 200
+      note: No rate-limit headers present.

@@ -26,7 +26,7 @@ schemes:
     settlement_header: PAYMENT-RESPONSE
     challenge_status: 402
     encoding: base64-encoded JSON
-    sources: [openapi/serbia-company-data-openapi.json]
+    sources: [openapi/_original/serbia-company-data-openapi.json]
     spec: https://github.com/x402-foundation/x402/blob/main/specs/transports-v2/http.md
     accepts:
       - scheme: exact

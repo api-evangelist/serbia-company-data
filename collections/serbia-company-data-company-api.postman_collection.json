@@ -1,0 +1,279 @@
+{
+  "item": [
+    {
+      "id": "e18b7197-f513-4e46-9351-98c825c5b48a",
+      "name": "Company",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8df14f18-3268-4e07-a212-ca7faa0bc68f",
+          "name": "Get one Serbian company profile",
+          "request": {
+            "name": "Get one Serbian company profile",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "company"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "mb",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "35708b13-1ce0-4d84-b755-8fbbcc8f3a45",
+              "name": "Official company profile",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "company"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "mb",
+                      "value": "07044275"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"company\": {\n    \"registrationNumber\": \"42499994\",\n    \"businessName\": null,\n    \"status\": \"string\",\n    \"incorporationDate\": null,\n    \"legalForm\": \"string\",\n    \"activityCode\": \"string\",\n    \"latestFinancialStatement\": {}\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5245d4d2-73cf-4bcd-82c2-7af92d0508d1",
+              "name": "Payment Required",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "company"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "mb",
+                      "value": "07044275"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Payment Required",
+              "code": 402,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e4a1308c-0f34-4319-99a8-014ede6312cd",
+          "name": "Get as many as 10 Serbian company profiles",
+          "request": {
+            "name": "Get as many as 10 Serbian company profiles",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "company",
+                "batch"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"registrationNumbers\": [\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1fc5c96d-b49b-4ea1-b7ae-608d6828b72b",
+              "name": "Batch company results",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "company",
+                    "batch"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"registrationNumbers\": [\n    \"07044275\",\n    \"20047216\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"results\": [\n    {\n      \"registrationNumber\": \"string\",\n      \"company\": {\n        \"registrationNumber\": \"33772166\",\n        \"businessName\": \"string\",\n        \"status\": null,\n        \"incorporationDate\": null,\n        \"legalForm\": \"string\",\n        \"activityCode\": null,\n        \"latestFinancialStatement\": {}\n      }\n    },\n    {\n      \"registrationNumber\": \"string\",\n      \"company\": {\n        \"registrationNumber\": \"94623049\",\n        \"businessName\": null,\n        \"status\": null,\n        \"incorporationDate\": null,\n        \"legalForm\": \"string\",\n        \"activityCode\": 1067.1680801741456,\n        \"latestFinancialStatement\": {}\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0faf24ae-b0a4-472e-8533-4fc80254b567",
+              "name": "Payment Required",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "company",
+                    "batch"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"registrationNumbers\": [\n    \"07044275\",\n    \"20047216\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Payment Required",
+              "code": 402,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://serbia-company-x402.vercel.app",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "4c882666-9b5b-4736-b65a-9aae0e023677",
+    "name": "Serbia Data Company API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Normalized Serbian company registry and latest financial-statement summaries from official APR high-value open data.",
+      "type": "text/plain"
+    }
+  }
+}

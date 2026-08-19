@@ -2,7 +2,7 @@ overlay: 1.0.0
 info:
   title: API Evangelist enhancements for Serbia Company Data
   version: 1.0.0
-extends: openapi/serbia-company-data-openapi.json
+extends: openapi/_original/serbia-company-data-openapi.json
 x-generated: '2026-08-09'
 x-method: generated
 x-source: >-

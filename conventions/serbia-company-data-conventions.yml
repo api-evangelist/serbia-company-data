@@ -1,6 +1,6 @@
 generated: '2026-08-09'
 method: searched
-source: https://serbia-company-x402.vercel.app/ + openapi/serbia-company-data-openapi.json + live probes
+source: https://serbia-company-x402.vercel.app/ + openapi/_original/serbia-company-data-openapi.json + live probes
 summary: >-
   Cross-cutting request/response semantics for the Serbia Company Data API, captured from the published
   landing page, the served OpenAPI 3.1 document, and live probes of every route. This is a small,

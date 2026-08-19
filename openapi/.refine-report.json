@@ -1,0 +1,20 @@
+{
+  "provider": "serbia-company-data",
+  "sources": [
+    "serbia-company-data-company-api-openapi.yml",
+    "serbia-company-data-search-api-openapi.yml"
+  ],
+  "outputs": [
+    "serbia-company-data-company-api-openapi.yml",
+    "serbia-company-data-search-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [
+    "serbia-company-data-company-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "serbia-company-data-search-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": []
+}
