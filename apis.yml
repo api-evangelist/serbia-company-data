@@ -6,7 +6,7 @@ description: >-
 url: https://raw.githubusercontent.com/api-evangelist/serbia-company-data/refs/heads/main/apis.yml
 created: '2026-07-28'
 modified: '2026-08-14'
-specificationVersion: '0.21'
+specificationVersion: '0.23'
 tags:
   - serbia
   - company-data
