@@ -4,6 +4,18 @@ description: >-
   financial-statement summaries from official APR high-value open data. Access is gated by HTTP 402 micropayments via
   the x402 protocol settled in Base USDC, requiring no account or API key.
 url: https://raw.githubusercontent.com/api-evangelist/serbia-company-data/refs/heads/main/apis.yml
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 created: '2026-07-28'
 modified: '2026-08-14'
 specificationVersion: '0.23'
