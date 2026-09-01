@@ -20,14 +20,14 @@ created: '2026-07-28'
 modified: '2026-08-14'
 specificationVersion: '0.23'
 tags:
-  - serbia
-  - company-data
-  - business-registry
+  - Serbia
+  - Company Data
+  - Business Registry
   - Open Data
   - x402
   - base-usdc
   - OpenAPI
-  - financial-statements
+  - Financial Statements
   - pay-per-call
   - agent-native
 tags_raw:
