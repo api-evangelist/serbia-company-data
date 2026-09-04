@@ -16,6 +16,21 @@ deliveryModel:
   - pricing
   generated: '2026-08-28'
   method: derived
+accessModel:
+  pricing: unknown
+  onboarding: open
+  trial: false
+  try_now: false
+  public: true
+  label: Open access
+  confidence: medium
+  source:
+  - authentication
+  - rate-limits
+  - security
+  - sandbox
+  generated: '2026-09-02'
+  method: derived
 created: '2026-07-28'
 modified: '2026-08-14'
 specificationVersion: '0.23'
@@ -143,9 +158,10 @@ common:
 - type: Overlay
   name: API Evangelist overlay — tags, descriptions, and the two undeclared free routes
   url: overlays/serbia-company-data-openapi-overlay.yaml
-- type: MCPServer
+- type: X-MCPServerCandidate
   name: Candidate MCP tool list derived from the OpenAPI — no server is published
   url: mcp/serbia-company-data-mcp.yml
+  note: 'Renamed from MCPServer 2026-09-03 (roadmap#247): the manifest self-describes as status: candidate — a tool list derived from the published API contracts, not an existing server. The scorer already read the manifest and reported mcp_server correctly; the MCPServer type was crediting the artifact-type surfaces with a server that does not exist.'
 - type: AgentSkill
   name: Packaged agent skills grounded in the published operationIds
   url: skills/_index.yml
