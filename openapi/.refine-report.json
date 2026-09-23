@@ -1,8 +1,7 @@
 {
   "provider": "serbia-company-data",
   "sources": [
-    "serbia-company-data-company-api-openapi.yml",
-    "serbia-company-data-search-api-openapi.yml"
+    "_original/serbia-company-data-openapi.json"
   ],
   "outputs": [
     "serbia-company-data-company-api-openapi.yml",
@@ -12,9 +11,17 @@
   "errors": [],
   "warnings": [],
   "notes": [
-    "serbia-company-data-company-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "serbia-company-data-search-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "serbia-company-data-openapi.json: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "serbia-company-data-openapi.json: tagged paths GET /api/company -> Company",
+    "serbia-company-data-openapi.json: tagged paths GET /api/search -> Search",
+    "serbia-company-data-openapi.json: tagged paths POST /api/company/batch -> Company",
+    "serbia-company-data-openapi.json: declared missing tag: Company",
+    "serbia-company-data-openapi.json: declared missing tag: Search",
     "apis.yml register: already-registered"
   ],
-  "skipped": []
+  "skipped": [
+    "serbia-company-data-company-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "serbia-company-data-search-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
