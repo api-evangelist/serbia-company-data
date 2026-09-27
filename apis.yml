@@ -44,7 +44,7 @@ tags:
   - OpenAPI
   - Financial Statements
   - pay-per-call
-  - agent-native
+  - Agent-Native
 tags_raw:
   - serbia
   - company-data
@@ -61,7 +61,6 @@ apis:
   name: Serbia Company Data Company API
   description: The Company API from Serbia Company Data — 2 operation(s) for company.
   humanURL: https://serbia-company-x402.vercel.app
-  baseURL: https://serbia-company-x402.vercel.app
   tags:
   - Company
   properties:
@@ -85,7 +84,6 @@ apis:
   name: Serbia Company Data Search API
   description: The Search API from Serbia Company Data — 1 operation(s) for search.
   humanURL: https://serbia-company-x402.vercel.app
-  baseURL: https://serbia-company-x402.vercel.app
   tags:
   - Search
   properties:
@@ -115,6 +113,8 @@ generated:
   confidence: 95
   at: '2026-07-28T14:24:59.856Z'
 common:
+- type: Website
+  url: https://serbia-company-x402.vercel.app/
 - type: DomainSecurity
   url: security/serbia-company-data-domain-security.yml
 - type: AgenticAccess
@@ -182,3 +182,10 @@ x-enrichment:
   status: enriched
   artifacts_added: 3
   pass: local-v1
+x-x402:
+  verified: true
+  probed: '2026-09-24'
+  url: "https://serbia-company-x402.vercel.app/api/company"
+  evidence:
+  - "header:payment-required"
+  control: 404
