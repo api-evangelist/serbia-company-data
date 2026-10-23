@@ -90,3 +90,9 @@ paths:
           description: Payment Required
       tags:
       - Search
+x-provenance:
+  method: harvested
+  publisher: Serbia Company Data
+  source: https://serbia-company-x402.vercel.app/openapi.json
+  note: split by refine-openapis from the provider's own published document, verified by fetch (openapi/_original/*.fetch.json);
+    stamped by stamp-openapi-provenance.py (roadmap#793)
