@@ -1,4 +1,4 @@
-# Serbia Company Data (serbia-company-data)
+# Serbia Company Data
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,93 +66,137 @@
 
 A single-purpose, pay-per-call REST API serving normalized Serbian company registry data and latest financial-statement summaries from official APR high-value open data. Access is gated by HTTP 402 micropayments via the x402 protocol settled in Base USDC, requiring no account or API key.
 
-**APIs.json:** [https://serbia-company-data.apievangelist.com/apis.yml](https://serbia-company-data.apievangelist.com/apis.yml)
+**Areas:** Serbia · Company Data · Business Registry · Open Data · x402 · base-usdc · OpenAPI · Financial Statements · pay-per-call · Agent-Native
 
-## Tags
+## Serbia Company Data on APIs.io
 
-- serbia
-- company-data
-- business-registry
-- open-data
-- x402
-- base-usdc
-- openapi
-- financial-statements
-- pay-per-call
-- agent-native
+Everything profiled for Serbia Company Data is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/serbia-company-data/](https://apis.io/providers/serbia-company-data/)** — or go straight to one of the APIs or properties below.
 
-## Timestamps
+### APIs (2)
 
-- **Created:** 2026-07-28
-- **Modified:** 2026-08-09
+- [Serbia Company Data Company API](https://apis.io/apis/serbia-company-data/serbia-company-data-company-api/) — The Company API from Serbia Company Data — 2 operation(s) for company.
+- [Serbia Company Data Search API](https://apis.io/apis/serbia-company-data/serbia-company-data-search-api/) — The Search API from Serbia Company Data — 1 operation(s) for search.
 
-## APIs
+### Published properties
 
-### Serbia Company Data Company API
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-The Company API from Serbia Company Data — 2 operation(s) for company.
+#### MCP servers (1)
 
-- **Human URL:** [https://serbia-company-x402.vercel.app](https://serbia-company-x402.vercel.app)
-- **Base URL:** `https://serbia-company-x402.vercel.app`
+Model Context Protocol servers that expose the API to agents.
 
-#### Tags
+- [serbia-company-data](https://apis.io/servers/serbia-company-data/serbia-company-data/)
 
-- Company
+#### Agentic access (1)
 
-#### Properties
+Which operations an agent can call, which act, and which need a human in the loop.
 
-- [OpenAPI](openapi/serbia-company-data-company-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/serbia-company-data-company-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/serbia-company-data-company-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Documentation](https://serbia-company-x402.vercel.app)
-- [Developer Portal](https://serbia-company-x402.vercel.app)
-- [A P Is J S O N](https://serbia-company-x402.vercel.app/.well-known/apis.json)
-- [Pricing](https://serbia-company-x402.vercel.app)
-- [License](https://data.gov.rs/sr/terms/)
+- [Serbia Company Data Agentic Access](https://apis.io/agentic-access/serbia-company-data/serbia-company-data-agentic-access/)
 
-### Serbia Company Data Search API
+#### JSON Schema (3)
 
-The Search API from Serbia Company Data — 1 operation(s) for search.
+The data models the API reads and writes.
 
-- **Human URL:** [https://serbia-company-x402.vercel.app](https://serbia-company-x402.vercel.app)
-- **Base URL:** `https://serbia-company-x402.vercel.app`
+- [Serbia Company Data Batchgetserbiancompanies Bazaar](https://apis.io/schemas/serbia-company-data/serbia-company-data-batchGetSerbianCompanies-bazaar/)
+- [Serbia Company Data Getserbiancompany Bazaar](https://apis.io/schemas/serbia-company-data/serbia-company-data-getSerbianCompany-bazaar/)
+- [Serbia Company Data Searchserbiancompanies Bazaar](https://apis.io/schemas/serbia-company-data/serbia-company-data-searchSerbianCompanies-bazaar/)
 
-#### Tags
+#### Examples (3)
 
-- Search
+Example requests and responses.
 
-#### Properties
+- [Serbia Company Data 402 Payment Required](https://apis.io/examples/serbia-company-data/serbia-company-data-402-payment-required/)
+- [Serbia Company Data Health Response](https://apis.io/examples/serbia-company-data/serbia-company-data-health-response/)
+- [Serbia Company Data Sample Response](https://apis.io/examples/serbia-company-data/serbia-company-data-sample-response/)
 
-- [OpenAPI](openapi/serbia-company-data-search-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/serbia-company-data-search-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/serbia-company-data-search-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Documentation](https://serbia-company-x402.vercel.app)
-- [Developer Portal](https://serbia-company-x402.vercel.app)
-- [A P Is J S O N](https://serbia-company-x402.vercel.app/.well-known/apis.json)
-- [Pricing](https://serbia-company-x402.vercel.app)
-- [License](https://data.gov.rs/sr/terms/)
+#### Collections (2)
 
-## Common Properties
+Postman and Open Collection request collections.
 
-- [Domain Security](security/serbia-company-data-domain-security.yml)
-- [Agentic Access](agentic-access/serbia-company-data-agentic-access.yml)
-- [Authentication](authentication/serbia-company-data-authentication.yml)
-- [Conventions](conventions/serbia-company-data-conventions.yml)
-- [Error Catalog](errors/serbia-company-data-problem-types.yml)
-- [Lifecycle](lifecycle/serbia-company-data-lifecycle.yml)
-- [Conformance](conformance/serbia-company-data-conformance.yml)
-- [Data Model](data-model/serbia-company-data-data-model.yml)
-- [Sandbox](sandbox/serbia-company-data-sandbox.yml)
-- [Examples](examples/serbia-company-data-sample-response.json)
-- [Examples](examples/serbia-company-data-402-payment-required.json)
-- [JSON Schema](json-schema/serbia-company-data-getSerbianCompany-bazaar-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [Well Known](well-known/serbia-company-data-well-known.yml)
-- [L L Ms Txt](llms/serbia-company-data-llms.txt)
-- [Overlay](overlays/serbia-company-data-openapi-overlay.yaml)
-- [M C P Server](mcp/serbia-company-data-mcp.yml)
-- [Agent Skill](skills/_index.yml)
+- [Serbia Data Company API](https://apis.io/collections/serbia-company-data/open-serbia-company-data-company-api/)
+- [Serbia Company Data Search API](https://apis.io/collections/serbia-company-data/open-serbia-company-data-search-api/)
 
-## Maintainers
+#### Overlays (1)
 
-**FN:** Serbia Company Data
-**URL:** https://serbia-company-x402.vercel.app
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Serbia Company Data Openapi Overlay](https://apis.io/overlays/serbia-company-data/serbia-company-data-openapi-overlay/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Serbia Company Data Authentication](https://apis.io/security/serbia-company-data/serbia-company-data-authentication/)
+- [Serbia Company Data Domain Security](https://apis.io/security/serbia-company-data/serbia-company-data-domain-security/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Serbia Company Data Plans Pricing](https://apis.io/plans/serbia-company-data/serbia-company-data-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Serbia Company Data Rate Limits](https://apis.io/rate-limits/serbia-company-data/serbia-company-data-rate-limits/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://serbia-company-x402.vercel.app/)
+- [Pricing](https://serbia-company-x402.vercel.app/)
+
+## API Evangelist rating
+
+**Kin Score 28.0** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 51.8 |
+| Contract quality | 48.6 |
+| Contract governance | 4.5 |
+| Operational transparency | 0.0 |
+| Developer ergonomics | 41.1 |
+| Access clarity | 10.5 |
+
+**Agent readiness 26.4** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | derived (partial credit) |
+| OpenAPI Examples | verified |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 16.7** — Government & Public Sector
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/serbia-company-data/](https://apis.io/providers/serbia-company-data/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Serbia Company Data: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/serbia-company-data/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
