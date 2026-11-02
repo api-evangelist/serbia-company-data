@@ -1,0 +1,191 @@
+name: Serbia Company Data
+description: >-
+  A single-purpose, pay-per-call REST API serving normalized Serbian company registry data and latest
+  financial-statement summaries from official APR high-value open data. Access is gated by HTTP 402 micropayments via
+  the x402 protocol settled in Base USDC, requiring no account or API key.
+url: https://raw.githubusercontent.com/api-evangelist/serbia-company-data/refs/heads/main/apis.yml
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
+accessModel:
+  pricing: unknown
+  onboarding: open
+  trial: false
+  try_now: false
+  public: true
+  label: Open access
+  confidence: medium
+  source:
+  - authentication
+  - rate-limits
+  - security
+  - sandbox
+  generated: '2026-09-02'
+  method: derived
+created: '2026-07-28'
+modified: '2026-08-14'
+specificationVersion: '0.23'
+tags:
+  - Serbia
+  - Company Data
+  - Business Registry
+  - Open Data
+  - x402
+  - base-usdc
+  - OpenAPI
+  - Financial Statements
+  - Pay-per-call
+  - Agent-Native
+tags_raw:
+  - serbia
+  - company-data
+  - business-registry
+  - open-data
+  - x402
+  - base-usdc
+  - openapi
+  - financial-statements
+  - pay-per-call
+  - agent-native
+apis:
+- aid: serbia-company-data:serbia-company-data-company-api
+  name: Serbia Company Data Company API
+  description: The Company API from Serbia Company Data — 2 operation(s) for company.
+  humanURL: https://serbia-company-x402.vercel.app
+  tags:
+  - Company
+  properties:
+  - type: OpenAPI
+    url: openapi/serbia-company-data-company-api-openapi.yml
+  - type: PostmanCollection
+    url: collections/serbia-company-data-company-api.postman_collection.json
+  - type: OpenCollection
+    url: collections/serbia-company-data-company-api.opencollection.json
+  - type: Documentation
+    url: https://serbia-company-x402.vercel.app
+  - type: DeveloperPortal
+    url: https://serbia-company-x402.vercel.app
+  - type: APIsJSON
+    url: https://serbia-company-x402.vercel.app/.well-known/apis.json
+  - type: Pricing
+    url: https://serbia-company-x402.vercel.app
+  - type: License
+    url: https://data.gov.rs/sr/terms/
+- aid: serbia-company-data:serbia-company-data-search-api
+  name: Serbia Company Data Search API
+  description: The Search API from Serbia Company Data — 1 operation(s) for search.
+  humanURL: https://serbia-company-x402.vercel.app
+  tags:
+  - Search
+  properties:
+  - type: OpenAPI
+    url: openapi/serbia-company-data-search-api-openapi.yml
+  - type: PostmanCollection
+    url: collections/serbia-company-data-search-api.postman_collection.json
+  - type: OpenCollection
+    url: collections/serbia-company-data-search-api.opencollection.json
+  - type: Documentation
+    url: https://serbia-company-x402.vercel.app
+  - type: DeveloperPortal
+    url: https://serbia-company-x402.vercel.app
+  - type: APIsJSON
+    url: https://serbia-company-x402.vercel.app/.well-known/apis.json
+  - type: Pricing
+    url: https://serbia-company-x402.vercel.app
+  - type: License
+    url: https://data.gov.rs/sr/terms/
+image: https://serbia-company-x402.vercel.app/favicon.svg
+maintainers:
+  - FN: Serbia Company Data
+    url: https://serbia-company-x402.vercel.app
+generated:
+  by: apis.io/add
+  model: claude-opus-4-8
+  confidence: 95
+  at: '2026-07-28T14:24:59.856Z'
+common:
+- type: Website
+  url: https://serbia-company-x402.vercel.app/
+- type: DomainSecurity
+  url: security/serbia-company-data-domain-security.yml
+- type: AgenticAccess
+  url: agentic-access/serbia-company-data-agentic-access.yml
+- type: Authentication
+  name: x402 payment-gated access profile (no accounts, no API keys)
+  url: authentication/serbia-company-data-authentication.yml
+- type: Conventions
+  name: Cross-cutting request/response semantics
+  url: conventions/serbia-company-data-conventions.yml
+- type: ErrorCatalog
+  name: Error catalog (402 payment challenge + observed failure modes)
+  url: errors/serbia-company-data-problem-types.yml
+- type: Lifecycle
+  name: Versioning, dataset currency, and upstream APR provenance
+  url: lifecycle/serbia-company-data-lifecycle.yml
+- type: Conformance
+  name: Standards conformance (OpenAPI 3.1, APIs.json 0.21, x402 v2, JSON Schema 2020-12)
+  url: conformance/serbia-company-data-conformance.yml
+- type: DataModel
+  name: Company / FinancialStatement / Municipality entity graph
+  url: data-model/serbia-company-data-data-model.yml
+- type: Sandbox
+  name: Free /api/sample route, published example identifiers, and the 402 dry run
+  url: sandbox/serbia-company-data-sandbox.yml
+- type: Examples
+  name: Free sample company profile response (captured verbatim)
+  url: examples/serbia-company-data-sample-response.json
+- type: Examples
+  name: Decoded x402 PAYMENT-REQUIRED challenges for all three priced operations
+  url: examples/serbia-company-data-402-payment-required.json
+- type: JSONSchema
+  name: JSON Schema 2020-12 documents published in the x402 bazaar extension
+  url: json-schema/serbia-company-data-getSerbianCompany-bazaar-schema.json
+- type: WellKnown
+  name: /.well-known probe index (apis.json 200; everything else 404)
+  url: well-known/serbia-company-data-well-known.yml
+- type: LLMsTxt
+  name: Generated llms.txt (the provider publishes none)
+  url: llms/serbia-company-data-llms.txt
+- type: Overlay
+  name: API Evangelist overlay — tags, descriptions, and the two undeclared free routes
+  url: overlays/serbia-company-data-openapi-overlay.yaml
+- type: X-MCPServerCandidate
+  name: Candidate MCP tool list derived from the OpenAPI — no server is published
+  url: mcp/serbia-company-data-mcp.yml
+  note: 'Renamed from MCPServer 2026-09-03 (roadmap#247): the manifest self-describes as status: candidate — a tool list derived from the published API contracts, not an existing server. The scorer already read the manifest and reported mcp_server correctly; the MCPServer type was crediting the artifact-type surfaces with a server that does not exist.'
+- type: AgentSkill
+  name: Packaged agent skills grounded in the published operationIds
+  url: skills/_index.yml
+- type: Plans
+  name: Pay-per-call pricing — no tiers; price published per route and carried in the 402 challenge
+  url: plans/serbia-company-data-plans-pricing.yml
+- type: Pricing
+  name: Published per-route USDC pricing on the landing page
+  url: https://serbia-company-x402.vercel.app/
+- type: RateLimits
+  name: Rate-limit probe — none published, no RateLimit headers observed
+  url: rate-limits/serbia-company-data-rate-limits.yml
+- type: Examples
+  name: Health + dataset provenance metadata response (captured verbatim)
+  url: examples/serbia-company-data-health-response.json
+x-enrichment:
+  date: '2026-08-14'
+  status: enriched
+  artifacts_added: 3
+  pass: local-v1
+x-x402:
+  verified: true
+  probed: '2026-09-24'
+  url: "https://serbia-company-x402.vercel.app/api/company"
+  evidence:
+  - "header:payment-required"
+  control: 404
