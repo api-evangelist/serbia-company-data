@@ -22,6 +22,9 @@ accessModel:
   trial: false
   try_now: false
   public: true
+  gated: none
+  gated_source:
+  - onboarding
   label: Open access
   confidence: medium
   source:
@@ -29,7 +32,7 @@ accessModel:
   - rate-limits
   - security
   - sandbox
-  generated: '2026-09-02'
+  generated: '2026-11-02'
   method: derived
 created: '2026-07-28'
 modified: '2026-08-14'
