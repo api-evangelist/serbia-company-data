@@ -32,7 +32,7 @@ accessModel:
   - rate-limits
   - security
   - sandbox
-  generated: '2026-11-02'
+  generated: '2026-11-06'
   method: derived
 created: '2026-07-28'
 modified: '2026-08-14'
